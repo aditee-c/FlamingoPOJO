@@ -17,6 +17,15 @@ private Passenger profile;
 @ManyToOne
 @JoinColumn(name = "flightId")
 private Flight flight;
+@ManyToOne
+private FlightDetails flightdetail;
+
+public FlightDetails getFlightdetail() {
+	return flightdetail;
+}
+public void setFlightdetail(FlightDetails flightdetail) {
+	this.flightdetail = flightdetail;
+}
 public int getTicketId() {
 	return ticketId;
 }

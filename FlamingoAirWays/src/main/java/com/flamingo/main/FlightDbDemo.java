@@ -18,7 +18,6 @@ import com.flamingo.entities.Passenger;
 import com.flamingo.entities.TicketInfo;
 import com.flamingo.entities.UserLogin;
 
-
 public class FlightDbDemo {
 
 	public static void main(String[] args) {
@@ -36,33 +35,31 @@ public class FlightDbDemo {
 		p.setAddress("Pune");
 		p.setEmailId("aditee.chourasiya30@gmail.com");
 		p.setPhoneNo(215313);
-		
+
 		CreditCard credit = new CreditCard();
 		credit.setCard(1);
 		credit.setCardType("Debit");
 		credit.setEx_month("02");
 		credit.setEx_year("2045");
-		
+
 		credit.setProfile(p);
-		
+
 		CreditCard credit1 = new CreditCard();
 		credit1.setCard(2);
 		credit1.setCardType("Credit");
 		credit1.setEx_month("03");
 		credit1.setEx_year("2023");
 		credit1.setProfile(p);
-		
+
 		List<CreditCard> cardlist = new ArrayList<CreditCard>();
 		cardlist.add(credit);
 		cardlist.add(credit1);
-		
-		
+
 		UserLogin user = new UserLogin();
 		user.setUsername("aduu3");
 		user.setPassword("Aditee");
 		user.setId(2);
 		user.setProfileId(p);
-		
 
 		Flight f = new Flight();
 		f.setFlightName("goAir");
@@ -74,7 +71,7 @@ public class FlightDbDemo {
 		f.setArrivalTime(LocalTime.of(23, 30));
 		f.setDuration(2f);
 		f.setTotalSeats(30);
-		
+
 		s1.save(f);
 		FlightDetails flight = new FlightDetails();
 		flight.setAvailableSeats(30);
@@ -92,7 +89,7 @@ public class FlightDbDemo {
 		List<FlightDetails> fly = new ArrayList<FlightDetails>();
 		fly.add(flight);
 		fly.add(flight1);
-		
+
 		TicketInfo tkt = new TicketInfo();
 		tkt.setSeatNo(30);
 		tkt.setStatus("CNF");
@@ -100,7 +97,7 @@ public class FlightDbDemo {
 		tkt.setFlight(f);
 		tkt.setFlightdetail(flight);
 		tkt.setProfile(p);
-		
+
 		TicketInfo tkt1 = new TicketInfo();
 		tkt1.setSeatNo(30);
 		tkt1.setStatus("CNF");
@@ -111,7 +108,7 @@ public class FlightDbDemo {
 		List<TicketInfo> ticket = new ArrayList<>();
 		ticket.add(tkt);
 		ticket.add(tkt1);
-		
+
 		s1.save(p);
 		s1.save(credit);
 		s1.save(credit1);
