@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Passenger {
 	@Id
-	/* @OneToMany(mappedBy = "profile") */
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int profileId;
 
@@ -31,16 +30,16 @@ public class Passenger {
 	private int phoneNo;
 
 	private String emailId;
-	//@OneToMany(mappedBy = "profile")
-//	private List<TicketInfo> tkt;
-//	
-//	public List<TicketInfo> getTkt() {
-//		return tkt;
-//	}
-//
-//	public void setTkt(List<TicketInfo> tkt) {
-//		this.tkt = tkt;
-//	}
+	@OneToMany(mappedBy = "profile")
+	private List<TicketInfo> tkt;
+	
+	public List<TicketInfo> getTkt() {
+		return tkt;
+	}
+
+	public void setTkt(List<TicketInfo> tkt) {
+		this.tkt = tkt;
+	}
 
 	public UserLogin getUser() {
 		return user;

@@ -75,14 +75,14 @@ public class FlightDbDemo {
 		s1.save(f);
 		FlightDetails flight = new FlightDetails();
 		flight.setAvailableSeats(30);
-		flight.setDepartureDateTime(LocalDateTime.of(LocalDate.of(2019, 9, 29), LocalTime.of(2, 00)));
 		flight.setPrice(3000);
 		flight.setFlightDetailId(1);
+		flight.setDepartureDateTime(LocalDateTime.of(2019, 10, 26, 23, 30));
 		flight.setFlight(f);
 
 		FlightDetails flight1 = new FlightDetails();
 		flight1.setAvailableSeats(20);
-		flight1.setDepartureDateTime(LocalDateTime.of(LocalDate.of(2019, 9, 29), LocalTime.of(3, 00)));
+		flight1.setDepartureDateTime(LocalDateTime.of(2019, 11, 27, 22, 00));
 		flight1.setPrice(4000);
 		flight1.setFlightDetailId(2);
 		flight1.setFlight(f);
@@ -94,7 +94,7 @@ public class FlightDbDemo {
 		tkt.setSeatNo(30);
 		tkt.setStatus("CNF");
 		tkt.setTicketId(12345);
-		tkt.setFlight(f);
+		
 		tkt.setFlightdetail(flight);
 		tkt.setProfile(p);
 
@@ -102,7 +102,7 @@ public class FlightDbDemo {
 		tkt1.setSeatNo(30);
 		tkt1.setStatus("CNF");
 		tkt1.setTicketId(12346);
-		tkt1.setFlight(f);
+		
 		tkt1.setFlightdetail(flight1);
 		tkt1.setProfile(p);
 		List<TicketInfo> ticket = new ArrayList<>();

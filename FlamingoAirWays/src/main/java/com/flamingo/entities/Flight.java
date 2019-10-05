@@ -35,17 +35,7 @@ public class Flight {
 	private int totalSeats;
 	@OneToMany(mappedBy = "flight")
 	private List<FlightDetails> fly;
-	@OneToMany(mappedBy="flight")
-	private List<TicketInfo> tkt;
 	
-	public List<TicketInfo> getTkt() {
-		return tkt;
-	}
-
-	public void setTkt(List<TicketInfo> tkt) {
-		this.tkt = tkt;
-	}
-
 	public Flight() {
 		// TODO Auto-generated constructor stub
 	}

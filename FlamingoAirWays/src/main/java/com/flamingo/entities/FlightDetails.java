@@ -19,7 +19,7 @@ public class FlightDetails {
 	private int flightDetailId;
 	private double price;
 	private int availableSeats;
-	private LocalDateTime DepartureDateTime;
+	private LocalDateTime departureDateTime;
 
 	@ManyToOne
 	@JoinColumn(name = "flightId")
@@ -70,13 +70,14 @@ public class FlightDetails {
 	}
 
 	public LocalDateTime getDepartureDateTime() {
-		return DepartureDateTime;
+		return departureDateTime;
 	}
 
 	public void setDepartureDateTime(LocalDateTime departureDateTime) {
-		DepartureDateTime = departureDateTime;
+		this.departureDateTime = departureDateTime;
 	}
 
+	
 	
 
 }

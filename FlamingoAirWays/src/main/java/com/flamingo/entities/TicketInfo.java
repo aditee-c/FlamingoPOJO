@@ -15,9 +15,6 @@ public class TicketInfo {
 	@JoinColumn(name = "profileid")
 	private Passenger profile;
 	@ManyToOne
-	@JoinColumn(name = "flightId")
-	private Flight flight;
-	@ManyToOne
 	private FlightDetails flightdetail;
 
 	public FlightDetails getFlightdetail() {
@@ -60,12 +57,5 @@ public class TicketInfo {
 		this.profile = profile;
 	}
 
-	public Flight getFlight() {
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		this.flight = flight;
-	}
-
+	
 }
