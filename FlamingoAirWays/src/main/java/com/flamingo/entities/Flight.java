@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	// @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
 	private int flightId;
 	private String flightName;
 	private String fromLocation;

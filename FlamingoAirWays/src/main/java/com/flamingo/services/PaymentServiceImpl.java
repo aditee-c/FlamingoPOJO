@@ -2,8 +2,10 @@ package com.flamingo.services;
 
 import java.util.List;
 
-import com.flamingo.dao.CreditCardDao;
-import com.flamingo.dao.CreditCardDaoImpl;
+
+import com.flamingo.dao.PaymentDao;
+import com.flamingo.dao.PaymentDaoImpl;
+import com.flamingo.entities.Payment;
 
 /**
  * @author akansh_sai
@@ -14,30 +16,30 @@ import com.flamingo.dao.CreditCardDaoImpl;
  * @description services implementation by credit card 
  *
  */
-public class CreditCardServiceImpl implements CreditCardService {
-	private CreditCardDao creditCardDao;
-	public CreditCardServiceImpl() {
+public class PaymentServiceImpl implements PaymentService {
+	private PaymentDao paymentDao;
+	public PaymentServiceImpl() {
 	
-		creditCardDao = new CreditCardDaoImpl();
+		paymentDao = new PaymentDaoImpl();
 	}
-	public void AddCard(com.flamingo.entities.CreditCard creditCard) {
-		creditCardDao.insert(creditCard);
+	public void AddCard(Payment payment) {
+		paymentDao.insert(payment);
 		
 	}
 
-	public void updateCard(com.flamingo.entities.CreditCard creditCard) {
-		creditCardDao.update(creditCard);
+	public void updateCard(Payment payment) {
+		paymentDao.update(payment);
 
 	}
 
-	public void removeCard(com.flamingo.entities.CreditCard creditCard) {
+	public void removeCard(Payment payment) {
 		
-		creditCardDao.delete(creditCard);
+		paymentDao.delete(payment);
 	}
 
-	public List<com.flamingo.entities.CreditCard> getAllCards() {
+	public List<Payment> getAllCards() {
 		
-		return creditCardDao.getAll();
+		return paymentDao.getAll();
 	}
-
+	
 }

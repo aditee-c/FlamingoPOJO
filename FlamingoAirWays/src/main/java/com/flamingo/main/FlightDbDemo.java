@@ -11,10 +11,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.flamingo.entities.CreditCard;
+
 import com.flamingo.entities.Flight;
 import com.flamingo.entities.FlightDetails;
 import com.flamingo.entities.Passenger;
+import com.flamingo.entities.Payment;
 import com.flamingo.entities.TicketInfo;
 import com.flamingo.entities.UserLogin;
 
@@ -31,34 +32,34 @@ public class FlightDbDemo {
 		Passenger p = new Passenger();
 		p.setFname("Aditee");
 		p.setLname("Chourasiya");
-		p.setProfileId(1002);
+		p.setProfileId(1001);
 		p.setAddress("Pune");
 		p.setEmailId("aditee.chourasiya30@gmail.com");
 		p.setPhoneNo(215313);
 
-		CreditCard credit = new CreditCard();
-		credit.setCard(1);
-		credit.setCardType("Debit");
-		credit.setEx_month("02");
-		credit.setEx_year("2045");
+		Payment payment = new Payment();
+		payment.setCard(1);
+		payment.setCardType("Debit");
+		payment.setEx_month(2);
+		payment.setEx_year(2045);
 
-		credit.setProfile(p);
+		payment.setProfile(p);
 
-		CreditCard credit1 = new CreditCard();
-		credit1.setCard(2);
-		credit1.setCardType("Credit");
-		credit1.setEx_month("03");
-		credit1.setEx_year("2023");
-		credit1.setProfile(p);
+		Payment payment1 = new Payment();
+		payment1.setCard(2);
+		payment1.setCardType("Credit");
+		payment1.setEx_month(3);
+		payment1.setEx_year(2023);
+		payment1.setProfile(p);
 
-		List<CreditCard> cardlist = new ArrayList<CreditCard>();
-		cardlist.add(credit);
-		cardlist.add(credit1);
+		List<Payment> cardlist = new ArrayList<Payment>();
+		cardlist.add(payment);
+		cardlist.add(payment1);
 
 		UserLogin user = new UserLogin();
 		user.setUsername("aduu3");
 		user.setPassword("Aditee");
-		user.setId(2);
+		//user.setId(5);
 		user.setProfileId(p);
 
 		Flight f = new Flight();
@@ -84,7 +85,7 @@ public class FlightDbDemo {
 		flight1.setAvailableSeats(20);
 		flight1.setDepartureDateTime(LocalDateTime.of(2019, 11, 27, 22, 00));
 		flight1.setPrice(4000);
-		flight1.setFlightDetailId(2);
+		//flight1.setFlightDetailId(2);
 		flight1.setFlight(f);
 		List<FlightDetails> fly = new ArrayList<FlightDetails>();
 		fly.add(flight);
@@ -110,8 +111,8 @@ public class FlightDbDemo {
 		ticket.add(tkt1);
 
 		s1.save(p);
-		s1.save(credit);
-		s1.save(credit1);
+		s1.save(payment);
+		s1.save(payment1);
 		s1.save(user);
 		s1.save(f);
 		s1.save(flight);

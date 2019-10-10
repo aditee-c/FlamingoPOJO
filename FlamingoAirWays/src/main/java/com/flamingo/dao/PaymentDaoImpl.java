@@ -7,7 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.flamingo.entities.CreditCard;
+
+import com.flamingo.entities.Payment;
 /**
  * @author akansh_sai
  * @creation_date 4th oct 2019 9:00pm
@@ -17,37 +18,37 @@ import com.flamingo.entities.CreditCard;
  * @description dao implementation
  *
  */
-public class CreditCardDaoImpl implements CreditCardDao {
+public class PaymentDaoImpl implements PaymentDao {
 	private Session s;
-	public CreditCardDaoImpl() {
+	public PaymentDaoImpl() {
 		Configuration c = new Configuration().configure();
 		SessionFactory sf = c.buildSessionFactory();
 		s=sf.openSession();
 	}
-	public void insert(CreditCard creditCard) {
+	public void insert(Payment payment) {
 		Transaction t = s.beginTransaction();
-		s.save(creditCard);
+		s.save(payment);
 		t.commit();
 
 	}
 
-	public void update(CreditCard creditCard) {
+	public void update(Payment payment) {
 	Transaction t = s.beginTransaction();
-	s.update(creditCard);
+	s.update(payment);
 	t.commit();
 
 	}
 
-	public void delete(CreditCard creditCard) {
+	public void delete(Payment payment) {
 		Transaction t = s.beginTransaction();
-		s.delete(creditCard);
+		s.delete(payment);
 		t.commit();
 
 	}
 
-	public List<CreditCard> getAll() {
+	public List<Payment> getAll() {
 		
-		 return s.createQuery("from CreditCard").getResultList();
+		 return s.createQuery("from Payment").getResultList();
 	}
 
 }

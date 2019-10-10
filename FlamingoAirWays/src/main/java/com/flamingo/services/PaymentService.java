@@ -2,7 +2,8 @@ package com.flamingo.services;
 
 import java.util.List;
 
-import com.flamingo.entities.CreditCard;
+
+import com.flamingo.entities.Payment;
 
 /**
  * @author akansh_sai
@@ -13,9 +14,9 @@ import com.flamingo.entities.CreditCard;
  * @description services by credit card 
  *
  */
-public interface CreditCardService {
-	void AddCard(CreditCard creditCard);
-	void updateCard(CreditCard creditCard);
-	void removeCard(CreditCard creditCard);
-	List<CreditCard> getAllCards(); 
+public interface PaymentService {
+	void AddCard(Payment payment);
+	void updateCard(Payment payment);
+	void removeCard(Payment payment);
+	List<Payment> getAllCards(); 
 }

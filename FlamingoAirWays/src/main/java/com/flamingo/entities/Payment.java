@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CreditCard {
+public class Payment {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private int id;
@@ -17,13 +17,13 @@ public class CreditCard {
 	@JoinColumn(name = "profileid")
 	private Passenger profile;
 	@Column(nullable = false)
-	private int card;
+	private int cardNumber;
 	@Column(nullable = false)
 	private String cardType;
 	@Column(nullable = false)
-	private String ex_month;
+	private int ex_month; //int
 	@Column(nullable = false)
-	private String ex_year;
+	private int ex_year;//int
 	public int getId() {
 		return id;
 	}
@@ -37,10 +37,10 @@ public class CreditCard {
 		this.profile = profile;
 	}
 	public int getCard() {
-		return card;
+		return cardNumber;
 	}
-	public void setCard(int card) {
-		this.card = card;
+	public void setCard(int cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 	public String getCardType() {
 		return cardType;
@@ -48,18 +48,25 @@ public class CreditCard {
 	public void setCardType(String cardType) {
 		this.cardType = cardType;
 	}
-	public String getEx_month() {
+	public int getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(int cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	public int getEx_month() {
 		return ex_month;
 	}
-	public void setEx_month(String ex_month) {
+	public void setEx_month(int ex_month) {
 		this.ex_month = ex_month;
 	}
-	public String getEx_year() {
+	public int getEx_year() {
 		return ex_year;
 	}
-	public void setEx_year(String ex_year) {
+	public void setEx_year(int ex_year) {
 		this.ex_year = ex_year;
 	}
+	
 	
 	
 }

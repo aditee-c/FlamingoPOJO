@@ -15,6 +15,7 @@ public class TicketInfo {
 	@JoinColumn(name = "profileid")
 	private Passenger profile;
 	@ManyToOne
+	@JoinColumn(name = "flightid")
 	private FlightDetails flightdetail;
 
 	public FlightDetails getFlightdetail() {

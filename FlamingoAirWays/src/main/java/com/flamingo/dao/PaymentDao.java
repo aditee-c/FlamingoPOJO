@@ -2,7 +2,8 @@ package com.flamingo.dao;
 
 import java.util.List;
 
-import com.flamingo.entities.CreditCard;
+
+import com.flamingo.entities.Payment;
 
 
 /**
@@ -14,9 +15,9 @@ import com.flamingo.entities.CreditCard;
  * @description dao interface using persistence layer
  *
  */
-public interface CreditCardDao {
-void insert(CreditCard creditCard);
-void update(CreditCard creditCard);
-void delete(CreditCard creditCard);
-List<CreditCard> getAll(); 
+public interface PaymentDao {
+void insert(Payment payment);
+void update(Payment payment);
+void delete(Payment payment);
+List<Payment> getAll(); 
 }

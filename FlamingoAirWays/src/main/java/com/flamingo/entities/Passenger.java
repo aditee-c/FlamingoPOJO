@@ -2,6 +2,7 @@ package com.flamingo.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Passenger {
 	@OneToOne(mappedBy = "profileid")
 	private UserLogin user;
 	@OneToMany(mappedBy = "profile")
-	private List<CreditCard> cardlist;
+	private List<Payment> cardlist;
 
 	private String fname;
 	private String mname;
@@ -28,7 +29,7 @@ public class Passenger {
 	private String address;
 
 	private int phoneNo;
-
+	@Column(unique = true)
 	private String emailId;
 	@OneToMany(mappedBy = "profile")
 	private List<TicketInfo> tkt;
@@ -49,11 +50,11 @@ public class Passenger {
 		this.user = user;
 	}
 
-	public List<CreditCard> getCardlist() {
+	public List<Payment> getCardlist() {
 		return cardlist;
 	}
 
-	public void setCardlist(List<CreditCard> cardlist) {
+	public void setCardlist(List<Payment> cardlist) {
 		this.cardlist = cardlist;
 	}
 
@@ -113,10 +114,6 @@ public class Passenger {
 		this.emailId = emailId;
 	}
 
-	@Override
-	public String toString() {
-		return "Passenger [profileId=" + profileId + ", fname=" + fname + ", mname=" + mname + ", lname=" + lname
-				+ ", address=" + address + ", phoneNo=" + phoneNo + ", emailId=" + emailId + "]";
-	}
+	
 
 }
