@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author akansh_sai
  * @version 1.0
@@ -18,6 +20,7 @@ import javax.persistence.OneToMany;
  * @description this is flight db
  *
  */
+@Component
 @Entity
 public class Flight {
 	@Id

@@ -9,5 +9,5 @@ public interface UserServices {
 	void addUser(UserLogin user);
 
 	void updateUser(UserLogin user);
-
+	
 }

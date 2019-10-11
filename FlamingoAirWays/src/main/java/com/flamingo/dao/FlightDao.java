@@ -8,7 +8,7 @@ public interface FlightDao {
 
 	List<Flight> getAll();
 
-	Flight getById(int flightid);
+	Flight getById(long flight_id);
 
 	void insert(Flight flight);
 

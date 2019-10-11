@@ -6,50 +6,45 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.flamingo.entities.Flight;
 
-
+@Repository
 public class FlightDaoImpl implements FlightDao {
-	private Session session;
-	public FlightDaoImpl() {
-		Configuration c = new Configuration().configure();
-		SessionFactory sf = c.buildSessionFactory();
-		session= sf.openSession();
-	}
-
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+	
+	@Override
 	public List<Flight> getAll() {
 		// TODO Auto-generated method stub
-		return session.createQuery("from Flight").getResultList();
+		return (List<Flight>) hibernateTemplate.find("from Flight");
 	}
 
-	public Flight getById(int flightid) {
+	@Override
+	public Flight getById(long flightid) {
 		// TODO Auto-generated method stub
-		return session.get(Flight.class, flightid);
+		return hibernateTemplate.get(Flight.class, flightid);
 	}
 
+	@Override
 	public void insert(Flight flight) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.save(flight);
-		t.commit();
-		
+		hibernateTemplate.save(flight);
 	}
 
+	@Override
 	public void update(Flight flight) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.update(flight);
-		t.commit();
-		
+		hibernateTemplate.update(flight);
 	}
 
+	@Override
 	public void delete(Flight flight) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.delete(flight);
-		t.commit();
-		
+		hibernateTemplate.delete(flight);
 	}
-
+	
 }

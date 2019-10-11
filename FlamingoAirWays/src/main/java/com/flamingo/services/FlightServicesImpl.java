@@ -11,17 +11,19 @@ import java.util.ArrayList;
  */
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.flamingo.dao.FlightDao;
 import com.flamingo.dao.FlightDaoImpl;
 import com.flamingo.entities.Flight;
 
 
-
+@Service
 public class FlightServicesImpl implements FlightServices {
+	@Autowired
 	private FlightDao flightDao;
-	public FlightServicesImpl() {
-		flightDao=new FlightDaoImpl();
-	}
+	
 	@Override
 	public List<Flight> findAllFlights() {
 		
@@ -84,4 +86,6 @@ public class FlightServicesImpl implements FlightServices {
 	}
 	return  count;
 	}
+	
+	
 }
