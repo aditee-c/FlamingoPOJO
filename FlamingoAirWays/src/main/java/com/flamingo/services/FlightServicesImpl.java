@@ -1,4 +1,5 @@
 package com.flamingo.services;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
@@ -15,24 +16,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.flamingo.dao.FlightDao;
-import com.flamingo.dao.FlightDaoImpl;
 import com.flamingo.entities.Flight;
-
 
 @Service
 public class FlightServicesImpl implements FlightServices {
 	@Autowired
 	private FlightDao flightDao;
-	
+
 	@Override
 	public List<Flight> findAllFlights() {
-		
+
 		return flightDao.getAll();
 	}
 
 	@Override
 	public Flight findFlightById(int flightid) {
-		
+
 		return flightDao.getById(flightid);
 	}
 
@@ -50,42 +49,52 @@ public class FlightServicesImpl implements FlightServices {
 
 	@Override
 	public void removeFlight(Flight flight) {
-		
+
 		flightDao.delete(flight);
 	}
-	
+
 	@Override
 	public List<Flight> findFlightByLocation(String from, String to) {
-				List<Flight> all= flightDao.getAll();
-				List<Flight> filterByLocation = new ArrayList<>();
-				for (Flight flight : all) {
-					if(flight.getFromLocation()==from && flight.getToLocation()==to) {
-						filterByLocation.add(flight);
-					}
-				}
-				return filterByLocation;
+		List<Flight> all = flightDao.getAll();
+		List<Flight> filterByLocation = new ArrayList<>();
+		for (Flight flight : all) {
+			if (flight.getFromLocation() == from && flight.getToLocation() == to) {
+				filterByLocation.add(flight);
+			}
+		}
+		return filterByLocation;
 	}
+
 	@Override
 	public List<Flight> findFlightByDate(LocalDate date) {
-				List<Flight> all= flightDao.getAll();
-				List<Flight> filterByDate = new ArrayList<>();
-				for (Flight flight : all) {
-					if(flight.getDepartureDate()==date) {
-						filterByDate.add(flight);
-					}
-				}
-				return filterByDate;
+		List<Flight> all = flightDao.getAll();
+		List<Flight> filterByDate = new ArrayList<>();
+		for (Flight flight : all) {
+			if (flight.getDepartureDate() == date) {
+				filterByDate.add(flight);
+			}
+		}
+		return filterByDate;
 	}
+
 	@Override
-	public Long getCountOfSeats(){
-	
-	long count=0;
-	List<Flight> all = flightDao.getAll();
-	for (Flight flight : all) {
-		count++;
+	public Long getCountOfSeats() {
+
+		long count = 0;
+		List<Flight> all = flightDao.getAll();
+		for (Flight flight : all) {
+			count++;
+		}
+		return count;
 	}
-	return  count;
+
+	@Override
+	public void updateAvailableSeats(Flight flight, int oldTotal, int newTotal) {
+		int oldAvail = flight.getTotalSeats();
+		System.out.println("Old Seats available are" + flight.getTotalSeats());
+		flight.setTotalSeats(newTotal - (oldTotal - oldAvail));
+		System.out.println("Available seats are " + flight.getTotalSeats());
+
 	}
-	
-	
+
 }

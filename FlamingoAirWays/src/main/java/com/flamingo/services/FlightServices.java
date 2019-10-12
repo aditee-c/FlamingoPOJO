@@ -20,5 +20,5 @@ public interface FlightServices {
 	List<Flight> findFlightByLocation(String from,String to);
 	List<Flight> findFlightByDate(LocalDate date);
 	public Long getCountOfSeats();
-	
+	public void updateAvailableSeats(Flight flight, int oldTotal, int newTotal);
 }
