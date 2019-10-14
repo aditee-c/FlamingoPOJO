@@ -10,13 +10,18 @@ package com.flamingo.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.flamingo.dao.PassengerDaoImpl;
 import com.flamingo.entities.Passenger;
 import com.flamingo.entities.PassengerDao;
 
-
+@Service
+@Transactional
 public class PassengerServiceImpl implements PassengerService {
-	
+	@Autowired
 	private PassengerDao passengerDao;
 	
 	public PassengerServiceImpl() {
