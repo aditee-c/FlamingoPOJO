@@ -1,8 +1,6 @@
 package com.flamingo.services;
 
-import java.util.List;
-
-
+import com.flamingo.entities.Passenger;
 import com.flamingo.entities.Payment;
 
 /**
@@ -18,5 +16,6 @@ public interface PaymentService {
 	void AddCard(Payment payment);
 	void updateCard(Payment payment);
 	void removeCard(Payment payment);
-	List<Payment> getAllCards(); 
+	Passenger findPassengerById(int id);
+	
 }

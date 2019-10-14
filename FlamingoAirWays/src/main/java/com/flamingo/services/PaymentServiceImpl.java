@@ -1,27 +1,28 @@
 package com.flamingo.services;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.flamingo.dao.PaymentDao;
-import com.flamingo.dao.PaymentDaoImpl;
+import com.flamingo.entities.Passenger;
 import com.flamingo.entities.Payment;
 
 /**
  * @author akansh_sai
  * @creation_date 4th oct 2019 9:00pm
- * @modification_date 4th oct 2019 9:00am
+ * @modification_date 4th oct 2019 9:00pm
  * @version 1.0
  * @copyright Zensar technologies. all rights reserved.
- * @description services implementation by credit card 
+ * @description services implementation by payment 
  *
  */
+@Service
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
+	@Autowired
 	private PaymentDao paymentDao;
-	public PaymentServiceImpl() {
 	
-		paymentDao = new PaymentDaoImpl();
-	}
 	public void AddCard(Payment payment) {
 		paymentDao.insert(payment);
 		
@@ -37,9 +38,13 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentDao.delete(payment);
 	}
 
-	public List<Payment> getAllCards() {
-		
-		return paymentDao.getAll();
+	@Override
+	public Passenger findPassengerById(int id) {
+		// TODO Auto-generated method stub
+		return paymentDao.getById(id);
 	}
+
+	
+	
 	
 }

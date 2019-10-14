@@ -6,7 +6,7 @@ import com.flamingo.entities.Passenger;
 
 public interface PassengerService {
 
-	List<Passenger> SeeAllFlights();  //admin
+	List<Passenger> SeeAllPassenger();  //admin
 	
 
 	void addPassenger(Passenger passenger); //passenger
@@ -14,6 +14,9 @@ public interface PassengerService {
 	void removePassenger(Passenger passenger); //admin
 	
 	void updatePassenger(Passenger passenger);  //passenger
+
+
+	Passenger findPassengersById(int id);
 	
 	
 }

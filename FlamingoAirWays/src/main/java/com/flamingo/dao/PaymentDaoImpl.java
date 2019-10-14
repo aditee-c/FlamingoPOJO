@@ -1,54 +1,50 @@
 package com.flamingo.dao;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
-
+import com.flamingo.entities.Passenger;
 import com.flamingo.entities.Payment;
 /**
  * @author akansh_sai
  * @creation_date 4th oct 2019 9:00pm
- * @modification_date 4th oct 2019 9:00am
+ * @modification_date 4th oct 2019 9:00pm
  * @version 1.0
  * @copyright Zensar technologies. all rights reserved.
  * @description dao implementation
  *
  */
+@Repository
 public class PaymentDaoImpl implements PaymentDao {
-	private Session s;
-	public PaymentDaoImpl() {
-		Configuration c = new Configuration().configure();
-		SessionFactory sf = c.buildSessionFactory();
-		s=sf.openSession();
-	}
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
+	@Override
 	public void insert(Payment payment) {
-		Transaction t = s.beginTransaction();
-		s.save(payment);
-		t.commit();
-
+		// TODO Auto-generated method stub
+		hibernateTemplate.save(payment);
 	}
 
+	@Override
 	public void update(Payment payment) {
-	Transaction t = s.beginTransaction();
-	s.update(payment);
-	t.commit();
-
+		// TODO Auto-generated method stub
+		hibernateTemplate.update(payment);
 	}
 
+	@Override
 	public void delete(Payment payment) {
-		Transaction t = s.beginTransaction();
-		s.delete(payment);
-		t.commit();
-
+		// TODO Auto-generated method stub
+		hibernateTemplate.delete(payment);
 	}
 
-	public List<Payment> getAll() {
-		
-		 return s.createQuery("from Payment").getResultList();
+	@Override
+	public Passenger getById(int id) {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.get(Passenger.class, id);
 	}
+	
+	
+	
 
 }

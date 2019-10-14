@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ import com.flamingo.dao.FlightDao;
 import com.flamingo.entities.Flight;
 
 @Service
+@Transactional
 public class FlightServicesImpl implements FlightServices {
 	@Autowired
 	private FlightDao flightDao;

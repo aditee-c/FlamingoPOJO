@@ -1,43 +1,37 @@
 package com.flamingo.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.flamingo.entities.UserLogin;
 
+@Repository
 public class UserDaoImpl implements UserDao {
-	private Session session;
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+	
 
-	public UserDaoImpl() {
-		Configuration con = new Configuration().configure();
-		SessionFactory sf = con.buildSessionFactory();
-		session = sf.openSession();
-	}
+	
 
 	@Override
 	public void insert(UserLogin user) {
-		Transaction tx = session.beginTransaction();
-		session.save(user);
-		tx.commit();
+		 hibernateTemplate.save(user);
 
 	}
 
 	@Override
 	public void update(UserLogin user) {
-		Transaction tx = session.beginTransaction();
-		session.update(user);
-		tx.commit();
-
+		hibernateTemplate.update(user);
 	}
 
 	
 
 	@Override
 	public UserLogin getById(int profileId) {
-
-		return session.get(UserLogin.class, profileId);
+		
+		return hibernateTemplate.get(UserLogin.class,profileId);
 	}
-
+		
+	
 }

@@ -1,8 +1,6 @@
 package com.flamingo.dao;
 
-import java.util.List;
-
-
+import com.flamingo.entities.Passenger;
 import com.flamingo.entities.Payment;
 
 
@@ -19,5 +17,6 @@ public interface PaymentDao {
 void insert(Payment payment);
 void update(Payment payment);
 void delete(Payment payment);
-List<Payment> getAll(); 
+Passenger getById(int id);
+ 
 }

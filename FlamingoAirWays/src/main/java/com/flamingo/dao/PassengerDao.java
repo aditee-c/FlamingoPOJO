@@ -2,7 +2,6 @@ package com.flamingo.dao;
 
 import java.util.List;
 
-import com.flamingo.entities.Flight;
 import com.flamingo.entities.Passenger;
 
 public interface PassengerDao {

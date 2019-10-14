@@ -2,17 +2,19 @@ package com.flamingo.services;
 
 import java.util.List;
 
-import com.flamingo.dao.FlightDetailsDao;
-import com.flamingo.dao.FlightDetailsDaoImpl;
-import com.flamingo.entities.FlightDetails;
+import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.flamingo.dao.FlightDetailsDao;
+import com.flamingo.entities.FlightDetails;
+@Service
+@Transactional
 public class FlightDetailsServicesImpl implements FlightDetailsServices {
-    private FlightDetailsDao flightdetailsDao;
-    
-    public FlightDetailsServicesImpl() {
-		// TODO Auto-generated constructor stub
-    	flightdetailsDao = new FlightDetailsDaoImpl();
-    }
+    @Autowired
+	private FlightDetailsDao flightdetailsDao;
+   
 			
 			
 	public List<FlightDetails> findAllFlightDetails() {

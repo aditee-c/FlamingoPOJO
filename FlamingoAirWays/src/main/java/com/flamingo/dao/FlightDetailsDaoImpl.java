@@ -2,56 +2,47 @@ package com.flamingo.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.flamingo.entities.FlightDetails;
 
+
+@Repository
 public class FlightDetailsDaoImpl implements FlightDetailsDao {
-	private Session session;
+	@Autowired
+	private HibernateTemplate hibernateTemplate; 
 
-	public FlightDetailsDaoImpl() {
-		// TODO Auto-generated constructor stub
-		Configuration c = new Configuration().configure();
-		SessionFactory f = c.buildSessionFactory();
-		session = f.openSession();
-	}
-
+	@Override
 	public List<FlightDetails> getAll() {
 		// TODO Auto-generated method stub
-
-		return session.createQuery("from flightdetails").getResultList();
+		return (List<FlightDetails>) hibernateTemplate.find("from FlightDetails");
 	}
 
+	@Override
 	public void insert(FlightDetails flightdetails) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.save(flightdetails);
-		t.commit();
-
+              hibernateTemplate.save(flightdetails);
 	}
 
+	@Override
 	public void update(FlightDetails flightdetails) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.update(flightdetails);
-		t.commit();
-
+            hibernateTemplate.update(flightdetails);
 	}
 
+	@Override
 	public void delete(FlightDetails flightdetails) {
 		// TODO Auto-generated method stub
-		Transaction t = session.beginTransaction();
-		session.delete(flightdetails);
-		t.commit();
-
+            hibernateTemplate.delete(flightdetails);
 	}
 
+	@Override
 	public FlightDetails getByflightId(int flightId) {
 		// TODO Auto-generated method stub
-		return session.get(FlightDetails.class, flightId);
+		
+		return hibernateTemplate.get(FlightDetails.class, flightId);
 	}
 
 }

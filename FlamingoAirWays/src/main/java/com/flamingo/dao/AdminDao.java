@@ -1,11 +1,9 @@
 package com.flamingo.dao;
 
-import java.util.List;
-
 import com.flamingo.entities.Admin;
 
 public interface AdminDao {
-	List<Admin> getAll();
+	
 
 	Admin getById(int adminId);
 

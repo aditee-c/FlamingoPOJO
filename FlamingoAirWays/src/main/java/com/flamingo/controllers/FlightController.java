@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.flamingo.dao.FlightDao;
 import com.flamingo.entities.Flight;
 import com.flamingo.services.FlightServices;
-
+@RestController
 public class FlightController {
 	@Autowired
 	@Qualifier("flightdao")

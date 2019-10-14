@@ -2,16 +2,20 @@ package com.flamingo.services;
 
 import java.util.List;
 
-import com.flamingo.dao.TicketInfoDao;
-import com.flamingo.dao.TicketInfoDaoImpl;
-import com.flamingo.entities.TicketInfo;
+import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.flamingo.dao.TicketInfoDao;
+
+import com.flamingo.entities.TicketInfo;
+@Service
+@Transactional
 public class TicketInfoServicesImpl implements TicketInfoServices {
+	@Autowired
 	private TicketInfoDao ticketInfoDao;
-	public TicketInfoServicesImpl() {
-		// TODO Auto-generated constructor stub
-		ticketInfoDao = new TicketInfoDaoImpl();
-	}
+	
 	@Override
 	public List<TicketInfo> findAllTicketInfos() {
 		// TODO Auto-generated method stub

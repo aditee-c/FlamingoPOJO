@@ -2,56 +2,56 @@ package com.flamingo.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.flamingo.entities.Passenger;
 
-
+/**
+ * @author CHARAN R
+ * @creation date: 4th oct 2019 10:23am
+ * @modification date: 4th oct 2019 10:23am
+ * @version 1.0
+ * @copyright Zensar technologies ltd, all rights reserved
+ *
+ */
+@Repository
 public class PassengerDaoImpl implements PassengerDao {
-	private Session session;
-	public PassengerDaoImpl() {
-		// TODO Auto-generated constructor stub
-		Configuration c = new Configuration().configure();
-		SessionFactory fac = c.buildSessionFactory();
-		session = fac.openSession();
-	}
 
-	public List<Passenger> getAll() {
-		// TODO Auto-generated method stub
+
+		@Autowired
+		private HibernateTemplate hibernateTemplate;
 		
-		 return session.createQuery("from Passenger").getResultList();
-	}
+		@Override
+		public List<Passenger> getAll() {
+			// TODO Auto-generated method stub
+			return (List<Passenger>) hibernateTemplate.find("from Passenger");
+		}
 
-	public Passenger getById(int profileId) {
-		// TODO Auto-generated method stub
-		return session.get(Passenger.class,profileId);
-	}
+		@Override
+		public Passenger getById(int PassengerId) {
+			// TODO Auto-generated method stub
+			return hibernateTemplate.get(Passenger.class, PassengerId);
+		}
 
-	public void insert(Passenger passenger) {
-		// TODO Auto-generated method stub
-		Transaction t=session.beginTransaction();
-        session.save(passenger);
-        t.commit();
+		@Override
+		public void insert(Passenger Passenger) {
+			// TODO Auto-generated method stub
+			hibernateTemplate.save(Passenger);
+		}
 
-	}
+		@Override
+		public void update(Passenger Passenger) {
+			// TODO Auto-generated method stub
+			hibernateTemplate.update(Passenger);
+		}
 
-	public void update(Passenger passenger) {
-		// TODO Auto-generated method stub
-		Transaction t=session.beginTransaction();
-		session.update(passenger);
-		t.commit();
+		@Override
+		public void delete(Passenger Passenger) {
+			// TODO Auto-generated method stub
+			hibernateTemplate.delete(Passenger);
+		}
 
-	}
-
-	public void delete(Passenger passenger) {
-		// TODO Auto-generated method stub
-		Transaction t=session.beginTransaction();
-        session.delete(passenger);
-        t.commit();
-
-	}
-
+		
 }
